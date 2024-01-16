@@ -1,5 +1,15 @@
 <h1 align='center'>EduShield</h1>
 
+## 📚 Description:
+**Problem Statement:**
+Student Dropout Prediction & Analysis For Quality Education
+
+**Brief Idea About The Project:**
+The aim of the project is to solve the problem of school and college students being dropped out for various reasons.
+
+It'll have an intuitive Progressive Web App where educational institutions can upload their current students data to get the dropout prediction of those current students and provide possible solutions for prevention, using a machine learning model powered by TensorFlow.
+
+It'll also provide in depth insights for dropped-out students in terms of educational institutes, geographic area, gender, cast, age, standard, attendance, grades, family income, poverty, mental health.
 
 ## 📡 Setup Locally:
 ### 📝 Prerequisites:
