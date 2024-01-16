@@ -9,16 +9,16 @@ import connectLiveReload from 'connect-livereload';
 dotenv.config();
 
 const server = express();
-const port = process.env.PORT || 3000;
+const port = process.env?.PORT || 3000;
 
 if (process.env?.ENV?.toLocaleLowerCase() === 'dev') {
     const liveReloadServer = livereload.createServer();
 
     liveReloadServer.watch('public');
     
-    liveReloadServer.server.once("connection", () => {
+    liveReloadServer.server.once('connection', () => {
         setTimeout(() => {
-            liveReloadServer.refresh("/");
+            liveReloadServer.refresh('/');
         }, 100);
     });
 
@@ -34,7 +34,7 @@ if (process.env?.ENV?.toLocaleLowerCase() === 'dev') {
 server.use(express.static('public'));
 
 server.get('/*', (req, res) => {
-    res.sendFile(path.resolve("public", "index.html"));
+    res.sendFile(path.resolve('public', 'index.html'));
 });
 
 server.listen(port, () => {
