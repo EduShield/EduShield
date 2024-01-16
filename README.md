@@ -3,8 +3,8 @@
 
 ## 📡 Setup Locally:
 ### 📝 Prerequisites:
-- Node.js v20 LTS
-- Git / GitHub CLI / GitHub Desktop
+- [Node.js v20 LTS](https://nodejs.org/en/download/)
+- [Git](https://git-scm.com/download) / [GitHub CLI](https://cli.github.com/) / [GitHub Desktop](https://desktop.github.com/)
 
 ### 🚀 Getting Started:
 1. Clone the repository to your local machine:
