@@ -25,7 +25,7 @@ if (process.env?.ENV?.toLocaleLowerCase() === 'dev') {
     server.use(connectLiveReload());
 
     server.use(cors({
-        origin: [`http://localhost:${port}`, `http://127.0.0.1:${port}`]
+        origin: [`http://localhost:5500`]
     }));
 
     console.log(chalk.yellowBright('Live Reload Enabled'));
