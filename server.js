@@ -1,3 +1,4 @@
+import fs from "fs";
 import path from 'path';
 import cors from 'cors';
 import chalk from 'chalk';
@@ -10,31 +11,33 @@ dotenv.config();
 
 const server = express();
 const port = process.env?.PORT || 3000;
+const env = process.env?.ENV?.toLocaleLowerCase();
 
-if (process.env?.ENV?.toLocaleLowerCase() === 'dev') {
+if (env === 'dev' || env === 'development') {
     const liveReloadServer = livereload.createServer();
-
     liveReloadServer.watch('public');
-    
     liveReloadServer.server.once('connection', () => {
         setTimeout(() => {
             liveReloadServer.refresh('/');
         }, 100);
     });
-
     server.use(connectLiveReload());
-
     server.use(cors({
-        origin: [`http://localhost:5500`]
+        origin: '*'
     }));
-
     console.log(chalk.yellowBright('Live Reload Enabled'));
 }
 
 server.use(express.static('public'));
 
 server.get('/*', (req, res) => {
-    res.sendFile(path.resolve('public', 'index.html'));
+    const fileName = `${req.url.substring(1)}.html`;
+    const filePath = (fileName) => path.resolve('public', fileName);
+    if (fs.existsSync(filePath(fileName))) {
+        res.sendFile(filePath(fileName));
+    } else {
+        res.status(404).sendFile(filePath('404.html'));
+    }
 });
 
 server.listen(port, () => {
