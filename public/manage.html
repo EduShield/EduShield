@@ -9,29 +9,35 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/app.css">
-    <script src="./js/htmx.min.js" defer></script>
+    <link rel="stylesheet" href="css/manage.css">
+    <script type="module" src="js/app.js" defer></script>
+    <script type="module" src="js/manage.js" defer></script>
 </head>
 
 <body class="light">
     <header>
         <h2 class="app-name">EduShield</h2>
-        <img class="user-pfp" src="svg/avatar2.svg" alt="user-pfp">
+        <img class="user-pfp" src="svg/avatar7.svg" alt="user-pfp">
+        <div class="user-menu">
+            <div class="user-name"></div>
+            <button class="app-signout-btn">Sign Out</button>
+        </div>
     </header>
 
     <nav class="app-nav">
-        <a hx-boost="true" href="dashboard.html" class="app-nav-links">
+        <a href="dashboard.html" class="app-nav-links">
             <span class="app-nav-link-icon material-symbols-rounded">dashboard</span>
             <span class="app-nav-link-text">Dashboard</span>
         </a>
-        <a hx-boost="true" href="manage.html" class="app-nav-links app-nav-links-selected">
+        <a href="manage.html" class="app-nav-links">
             <span class="app-nav-link-icon material-symbols-rounded">database</span>
             <span class="app-nav-link-text">Manage Data</span>
         </a>
-        <a hx-boost="true" href="visualize.html" class="app-nav-links">
+        <a href="visualize.html" class="app-nav-links">
             <span class="app-nav-link-icon material-symbols-rounded">analytics</span>
             <span class="app-nav-link-text">Visualize Data</span>
         </a>
-        <a hx-boost="true" href="ai.html" class="app-nav-links">
+        <a href="ai.html" class="app-nav-links">
             <span class="app-nav-link-icon material-symbols-rounded">assignment</span>
             <span class="app-nav-link-text">Get AI Report</span>
         </a>
@@ -40,8 +46,44 @@
         </button>
     </nav>
 
-    <main>
-        Manage Data
+    <main id="main">
+        <h3>Manage Data</h3>
+
+        <div id="upload-file-container">
+            <div id="upload-file-input-container">
+                <h4 id="upload-file-heading">Upload New Data</h4>
+                <input id="upload-file-input" type="file" name="upload-file-input">
+                <label id="upload-file-input-label" for="upload-file-input">
+                    Click To Choose Files<br>or,<br>Drag & Drop Files Here
+                </label>
+            </div>
+            <div id="upload-file-details-container">
+                <div id="upload-file-details">
+                    Select A File <br> To Upload
+                </div>
+                <button id="upload-file-btn" type="submit">
+                    <span class="material-symbols-rounded">cloud_upload</span>
+                    <span>Upload</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="manage-data-container">
+            <h4 id="manage-data-heading">Manage Uploaded Data</h4>
+            <table id="manage-data-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="manage-data-table-body">
+                    <tr align="center" name="null">
+                        <td colspan="2">Loading...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </main>
 </body>
 

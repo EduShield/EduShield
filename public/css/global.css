@@ -15,7 +15,8 @@ a {
 /* Themes */
 
 :root {
-    --left-nav-gap: 4rem;
+    --left-nav-gap: 3.5rem;
+    --border-radius: 3.5px;
     --gray0: #f8f8f8;
     --gray1: #dbe1e8;
     --gray2: #b2becd;
@@ -23,7 +24,7 @@ a {
     --gray4: #454e56;
     --gray5: #2a2e35;
     --gray6: #12181b;
-    --blue: #0084a5;
+    --blue: #039dc4;
     --purple: #a82dd1;
     --yellow: #fff565;
 }

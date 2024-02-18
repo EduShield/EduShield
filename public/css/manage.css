@@ -1,0 +1,218 @@
+#upload-file-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 95%;
+    margin: 5px 0px 25px 0px;
+    padding: 5px 0px 10px 0px;
+    border-radius: var(--border-radius);
+    background: var(--gray1);
+    box-shadow: 0px 0px 6px 0px rgba(175, 175, 175, 0.5);
+}
+
+@media screen and (max-width: 650px) {
+    #upload-file-container {
+        flex-direction: column;
+    }
+
+    #upload-file-container div {
+        width: 100%;
+        padding: 0;
+    }
+
+    #upload-file-details-container {
+        padding-top: 5px !important;
+    }
+}
+
+#upload-file-container div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0;
+}
+
+#upload-file-input-container {
+    width: 70%;
+    max-width: 550px;
+}
+
+#upload-file-details-container {
+    width: 30%;
+    padding-top: 40px;
+}
+
+/* --------------------------- */
+
+#upload-file-heading {
+    margin: 15px 0px 15px 0px;
+    padding: 0;
+}
+
+#upload-file-input {
+    height: 150px;
+    width: 90%;
+    margin: 5px 0px 20px 0px;
+    padding: 0;
+    border-radius: var(--border-radius);
+    border: 1px dashed var(--gray4);
+    outline: none;
+    color: transparent;
+    background: linear-gradient(45deg, rgba(100, 100, 100, 0.1) 0%, rgba(150, 150, 150, 0.1) 100%);
+    cursor: pointer;
+    user-select: none;
+    z-index: 2;
+}
+
+#upload-file-input:hover {
+    border: 1px solid var(--gray6);
+}
+
+#upload-file-input::file-selector-button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: transparent;
+    background-color: transparent;
+}
+
+#upload-file-input-label {
+    font-size: 1.1rem;
+    height: 0px;
+    margin: 0;
+    padding: 0;
+    color: var(--gray4);
+    border-radius: var(--border-radius);
+    outline: none;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    z-index: 1;
+    transform: translate(0px, -130px);
+}
+
+/* ------------------------------------------------ */
+
+#upload-file-details {
+    width: 90%;
+    text-align: center;
+    margin: 0;
+}
+
+#upload-file-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    width: 7rem;
+    margin: 12.5px 0px 10px 0px;
+    padding: 2px;
+    border-radius: var(--border-radius);
+    border: none;
+    outline: none;
+    color: rgb(26, 26, 26);
+    background: var(--border-color);
+}
+
+#upload-file-btn:hover {
+    cursor: pointer;
+}
+
+#upload-file-btn span {
+    margin: 3px;
+}
+
+/* ------------------------------------------------ */
+
+#manage-data-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 95%;
+    margin: 5px 0px 50px 0px;
+    padding: 0;
+    border-radius: var(--border-radius);
+    background: var(--gray1);
+    box-shadow: 0px 0px 6px 0px rgba(175, 175, 175, 0.5);
+}
+
+#manage-data-heading {
+    margin: 15px 0px 15px 0px;
+    padding: 0;
+}
+
+#manage-data-table {
+    width: 90%;
+    margin: 0px 0px 20px 0px;
+    padding: 0;
+    border-collapse: collapse;
+}
+
+#manage-data-table th {
+    padding: 10px 5px;
+    border-bottom: 1px solid var(--gray4);
+    background: var(--gray2);
+}
+
+#manage-data-table td {
+    padding: 5px;
+    border-bottom: 1px solid var(--gray4);
+    text-align: center;
+    height: 20px;
+}
+
+#manage-data-table tr:hover {
+    background: var(--gray2);
+}
+
+#manage-data-table th:first-child,
+#manage-data-table td:first-child {
+    border-top-left-radius: var(--border-radius);
+    border-bottom-left-radius: var(--border-radius);
+}
+
+#manage-data-table th:last-child,
+#manage-data-table td:last-child {
+    border-top-right-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+}
+
+.manage-data-btns {
+    width: 35%;
+}
+
+.manage-data-download-btn,
+.manage-data-delete-btn {
+    margin: 0px 0px 0px 0px;
+    padding: 3px 7px 1px 7px;
+    border-radius: var(--border-radius);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: var(--gray6);
+    z-index: 2;
+}
+
+.manage-data-download-btn span,
+.manage-data-delete-btn span {
+    z-index: -1;
+}
+
+.manage-data-download-btn {
+    margin-right: 6px;
+    background: var(--blue);
+}
+
+@media screen and (max-width: 400px) {
+    .manage-data-download-btn {
+        margin-right: 0px;
+        margin-bottom: 5px;
+    }
+}
+
+.manage-data-delete-btn {
+    background: rgb(230, 0, 0);
+}

@@ -12,11 +12,13 @@ header {
     align-items: center;
     justify-content: space-between;
     flex-direction: row;
+    position: fixed;
     width: 100%;
     padding: 10px 0px;
     user-select: none;
     background: var(--bg-nav);
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 3;
 }
 
 .app-name {
@@ -31,6 +33,59 @@ header {
     cursor: pointer;
 }
 
+.user-menu::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    right: 12.5px;
+    height: 16px;
+    width: 20px;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    background: var(--gray2);
+}
+
+.user-menu {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    width: auto;
+    padding: 6px;
+    border-radius: var(--border-radius);
+    background: linear-gradient(to right, var(--gray1), var(--gray2));
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.user-menu-active {
+    display: flex;
+}
+
+.user-name {
+    font-size: 1rem;
+    margin: 0px 0px 5px 0px;
+}
+
+.app-signout-btn {
+    font-size: 0.9rem;
+    margin: 0px 0px 2px 0px;
+    padding: 2px 5px 3px 5px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: var(--border-radius);
+    background: rgb(238, 6, 64);
+    color: var(--gray6);
+    transition: background 200ms ease;
+}
+
+.app-signout-btn:hover {
+    background: rgb(214, 0, 0);
+}
+
 /* ------------------------ */
 
 .app-nav {
@@ -39,19 +94,21 @@ header {
     justify-content: center;
     flex-direction: column;
     position: fixed;
-    left: 0;
-    width: var(--left-nav-gap);
-    height: calc(100vh - 75px);
-    margin-top: 55px;
+    left: 0px;
+    top: 55.5px;
     padding-top: 20px;
+    width: var(--left-nav-gap);
+    height: calc(100vh - 70.5px);
+    /* margin-top: 55px; */
     border-radius: 0px 10px 0px 0px;
     user-select: none;
     background: var(--bg-nav);
     transition: width 200ms ease;
+    z-index: 3;
 }
 
 .app-nav:hover {
-    width: 14rem;
+    width: 12rem;
 }
 
 .app-nav:hover .app-nav-links {
@@ -68,6 +125,7 @@ header {
     margin: 5px 0px;
     padding: 10px;
     border-radius: 20px;
+    z-index: 5;
 }
 
 .app-nav-links:hover {
@@ -82,10 +140,14 @@ header {
     display: none;
     font-size: 1rem;
     padding-left: 5px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 600ms linear;
 }
 
 .app-nav:hover .app-nav-link-text {
     display: block;
+    opacity: 1;
 }
 
 .left-menu-btn {
@@ -118,6 +180,11 @@ main {
     font-size: 16px;
     height: 100%;
     width: calc(100% - calc(1rem + var(--left-nav-gap)));
-    margin: 0.5rem 0.5rem 0rem calc(0.5rem + var(--left-nav-gap));
+    margin: 0rem 0.5rem 0rem calc(0.5rem + var(--left-nav-gap));
+    padding-top: 60px;
     /* background-color: antiquewhite; */
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
