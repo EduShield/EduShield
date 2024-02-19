@@ -1,4 +1,4 @@
-import fs from "fs";
+import fs from 'fs';
 import path from 'path';
 import cors from 'cors';
 import chalk from 'chalk';
@@ -7,11 +7,12 @@ import express from 'express';
 import admin from 'firebase-admin';
 import livereload from 'livereload';
 import connectLiveReload from 'connect-livereload';
-import firebaseServiceAccount from './firebaseServiceAccountKey.json' assert {type: 'json'};
+import firebaseServiceAccount from './../firebaseServiceAccountKey.json' assert {type: 'json'};
 
 dotenv.config();
 
-const server = express();
+const publicDir = path.resolve('public');
+const app = express();
 const port = process.env?.PORT || 3000;
 const env = process.env?.ENV?.toLocaleLowerCase();
 const gcpProjectId = firebaseServiceAccount.project_id;
@@ -36,34 +37,23 @@ const storage = admin.storage().bucket();
 
 if (env === 'dev' || env === 'development') {
     const liveReloadServer = livereload.createServer();
-    liveReloadServer.watch('public');
+    liveReloadServer.watch(publicDir);
     liveReloadServer.server.once('connection', () => {
         setTimeout(() => {
             liveReloadServer.refresh('/');
         }, 100);
     });
-    server.use(connectLiveReload());
-    server.use(cors({
+    app.use(connectLiveReload());
+    app.use(cors({
         origin: '*'
     }));
     console.log(chalk.yellowBright('Live Reload Enabled'));
 }
 
-server.use(express.json());
-server.use(express.static('public'));
+app.use(express.json());
+app.use(express.static(publicDir));
 
-// Done Client Side
-// server.get('/api/data', (req, res) => {
-//     res.send('Get Student Data');
-// });
-// server.post('/api/data', (req, res) => {
-//     res.send('Post Student Data');
-// });
-// server.delete('/api/data', (req, res) => {
-//     res.send('Delete Student Data');
-// });
-
-server.post('/api/visualize', (req, res) => {
+app.post('/api/visualize', (req, res) => {
     const data = req.body;
     const idToken = data.token;
     const fileName = data.fileName;
@@ -97,7 +87,7 @@ server.post('/api/visualize', (req, res) => {
         });
 });
 
-server.post('/api/ai', (req, res) => {
+app.post('/api/ai', (req, res) => {
     const data = req.body;
     const idToken = data.token;
     const fileName = data.fileName;
@@ -131,9 +121,9 @@ server.post('/api/ai', (req, res) => {
         });
 });
 
-server.get('/*', (req, res) => {
+app.get('/*', (req, res) => {
     const fileName = `${req.url.substring(1)}.html`;
-    const filePath = (fileName) => path.resolve('public', fileName);
+    const filePath = (fileName) => path.join(publicDir, fileName);
     if (fs.existsSync(filePath(fileName))) {
         res.sendFile(filePath(fileName));
     } else {
@@ -141,17 +131,20 @@ server.get('/*', (req, res) => {
     }
 });
 
-server.listen(port, () => {
+const server = app.listen(port, () => {
     console.log(`${chalk.greenBright('Server Listening On Port')} ${chalk.greenBright.bold(port)}\n${chalk.magentaBright('Visit:')} ${chalk.blue('http://localhost:' + port)}`);
 });
 
-process.on('SIGINT', signalHandler);
-process.on('SIGTERM', signalHandler);
-process.on('SIGQUIT', signalHandler);
+process.on('SIGINT', shutdownGracefully);
+process.on('SIGTERM', shutdownGracefully);
+process.on('SIGQUIT', shutdownGracefully);
 
-function signalHandler(signal) {
-    console.log(chalk.redBright(`Received ${signal}`));
-    console.log(chalk.redBright('Shutting Down Server'));
+function shutdownGracefully(signal) {
+    console.log(chalk.bgRedBright(`Received ${signal}`));
+    console.log(chalk.redBright('Shutting Down Server Gracefully...'));
     admin.app().delete();
-    process.exit();
+    server.close();
+    setTimeout(() => {
+        process.exit(0);
+    }, 1000);
 }
