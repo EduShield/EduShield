@@ -2,7 +2,7 @@
   "name": "edushield",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "server/main.js",
   "type": "module",
   "scripts": {
     "test": "echo \"No Test Specified\"",
