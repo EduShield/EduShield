@@ -20,13 +20,19 @@ onAuthStateChanged(auth, (user) => {
         console.log('User is signed out');
         googleSignInBtn.disabled = false;
         googleSignInBtn.style.cursor = 'pointer';
-        googleSignInBtn.textContent = 'Continue With Google';
+        googleSignInBtn.innerHTML = '<img src="./img/google_logo.png" alt="google" class="google-img"><p class="google-text">Continue with Google</p>';
     }
 });
 
 googleSignInBtn.addEventListener('click', () => {
     googleSignInBtn.disabled = true;
     googleSignInBtn.style.cursor = 'not-allowed';
-    googleSignInBtn.textContent = 'Signing In...';
+    googleSignInBtn.innerHTML = '<img src="./svg/spinner.svg" alt="loading" class="loading-svg">';
     signInWithRedirect(auth, googleProvider);
 });
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./js/sw.js')
+        .then((reg) => console.log('service worker registered', reg))
+        .catch((err) => console.log('service worker not registered', err));
+}

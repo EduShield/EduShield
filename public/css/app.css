@@ -14,16 +14,29 @@ header {
     flex-direction: row;
     position: fixed;
     width: 100%;
-    padding: 10px 0px;
+    padding: 7px 0px;
     user-select: none;
     background: var(--bg-nav);
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     z-index: 3;
 }
 
-.app-name {
+.app-name-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
     margin: 0px 0px 0px 15px;
+    padding: 0;
+}
+
+.app-logo {
+    width: 40px;
+}
+
+.app-name {
     text-align: center;
+    margin: 0;
 }
 
 .user-pfp {

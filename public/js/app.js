@@ -105,6 +105,11 @@ async function userIdToken() {
 
 export { userIdToken, uploadFile, listUploadedFiles, downloadFile, deleteFile };
 
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./js/sw.js')
+        .then((reg) => console.log('service worker registered', reg))
+        .catch((err) => console.log('service worker not registered', err));
+}
 
 // navigation.addEventListener("navigate", (event) => {
 //     if (event.navigationType === 'push') {

@@ -13,7 +13,7 @@ It'll also provide in depth insights for dropped-out students in terms of educat
 
 ## 📡 Setup Locally:
 ### 📝 Prerequisites:
-- [Node.js v20 LTS](https://nodejs.org/en/download/)
+- [Docker & Docker Compose](https://docs.docker.com/get-docker/)
 - [Git](https://git-scm.com/download) / [GitHub CLI](https://cli.github.com/) / [GitHub Desktop](https://desktop.github.com/)
 
 ### 🚀 Getting Started:
@@ -27,23 +27,39 @@ git clone https://github.com/itskdhere/EduShield
 cd EduShield
 ```
 
-3. Install dependencies:
-```bash
-npm install
-```
-4. Copy the `.env.example` file to `.env` file in the root project directory:
+3. Copy the `.env.example` file to `.env` file in the root project directory:
 ```bash
 cp .env.example .env
 ```
-Then edit the `.env` file and add the required environment variables accrdingly.
+Then edit the `.env` file and add the required environment variables accordingly.
 
-5. Run the app:
-```bash
-npm run start
+4. Firebase Setup:
+- Create a new project in [Firebase](https://console.firebase.google.com/), create a web app and copy the Firebase config object to `public/js/firebaseConfig.json` file accordingly.
+- From the Firebase project settings, create a new service account and download the service account key file and save it as `firebaseServiceAccountKey.json` in the root project directory.
+- In the Firebase Authentication, enable the `Google` sign-in method.
+- In the Firebase Storage, create a Storage bucket and add the following rules:
+```cel
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /{userId}/{allPaths=**} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+  }
+}
 ```
-Or, During development, run the app in watch mode:
+
+5. Create a custom docker network:
 ```bash
-npm run dev
+docker network create itskdhere
 ```
+
+6. Build and run the app:
+```bash
+docker compose up -d
+```
+
+7. Visit: <a href="http://localhost:8080/" target="_blank" rel="noopener noreferrer">http://localhost:4000</a> 🎉
 
 <p align='center'>----</p>

@@ -1,6 +1,13 @@
 .git/
+
 node_modules/
+temp/
+tmp/
+
+.env
 .env.example
 .gitignore
+
+firebaseServiceAccountKey.json
 LICENSE
 README.md

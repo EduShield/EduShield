@@ -4,25 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>continue-with-google</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="/img/edushild.png">
+    <title>EduShield | Auth</title>
+    <meta name="description" content="Student Dropout Prediction & Analysis For Quality Education">
+    <link rel="stylesheet" href="./css/global.css">
     <link rel="stylesheet" href="./css/auth.css">
-    <link rel="icon" href="./edushild.png" type="image/x-icon">
+    <script type="module" src="./js/auth.js"></script>
+    <link rel="manifest" href="manifest.json">
 </head>
 
 <body>
     <header>
         <img src="./img/edushild.png" alt="Logo" class="header-logo">
-        <h1 class="header-name">EduShild</h1>
+        <h1 class="header-name">EduShield</h1>
     </header>
 
     <main>
         <div class="maindiv">
-            <h3 class="login">
-                Sign-Up / Sign-In
-            </h3>
-            <button class="continue-with-google">
-                <img src="./img/google_logo.png" alt="google" class="google-img">
-                <p class="google-text">Continue with Google</p>
+            <p class="login">
+                Sign Up / Sign In
+            </p>
+            <button disabled id="google-signin-btn" class="continue-with-google">
+                <img src="./svg/spinner.svg" alt="loading" class="loading-svg">
             </button>
         </div>
     </main>

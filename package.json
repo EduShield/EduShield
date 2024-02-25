@@ -1,11 +1,11 @@
 {
   "name": "edushield",
   "version": "1.0.0",
-  "description": "",
+  "description": "Student Dropout Prediction & Analysis For Quality Education",
   "main": "server/main.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"No Test Specified\"",
+    "test": "echo \"No Test(s) Specified\"",
     "dev": "nodemon --ext * --ignore public/ .",
     "start": "node ."
   },
@@ -14,7 +14,7 @@
     "url": "git+https://github.com/itskdhere/EduShield.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/itskdhere/EduShield/issues"
   },

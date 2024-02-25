@@ -7,12 +7,15 @@ services:
     restart: unless-stopped
     networks:
       - default
+      - itskdhere
     env_file:
       - .env
     ports:
       - $PORT:$PORT
+    volumes:
+      - ./firebaseServiceAccountKey.json:/app/firebaseServiceAccountKey.json:ro
 
 networks:
-  default:
+  itskdhere:
     external: true
     name: itskdhere

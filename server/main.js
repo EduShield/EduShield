@@ -13,26 +13,16 @@ dotenv.config();
 
 const publicDir = path.resolve('public');
 const app = express();
-const port = process.env?.PORT || 3000;
+const port = process.env?.PORT || 4000;
 const env = process.env?.ENV?.toLocaleLowerCase();
 const gcpProjectId = firebaseServiceAccount.project_id;
-const rtdbRegion = process.env?.RTDB_REGION?.toLocaleLowerCase();
-
-if (rtdbRegion === 'asia-southeast1' || rtdbRegion === 'europe-west1') {
-    var rtdbUrl = `https://${gcpProjectId}-default-rtdb.${rtdbRegion}.firebasedatabase.app`;
-} else if (rtdbRegion === 'us-central1') {
-    var rtdbUrl = `https://${gcpProjectId}.firebaseio.com`;
-}
 
 admin.initializeApp({
     credential: admin.credential.cert(firebaseServiceAccount),
     storageBucket: `${gcpProjectId}.appspot.com`,
-    databaseURL: rtdbUrl
 });
 
 const auth = admin.auth();
-const fsdb = admin.firestore();
-const rtdb = admin.database();
 const storage = admin.storage().bucket();
 
 if (env === 'dev' || env === 'development') {
