@@ -7,7 +7,7 @@ services:
     restart: unless-stopped
     networks:
       - default
-      - itskdhere
+      - npm
     env_file:
       - .env
     ports:
@@ -16,6 +16,6 @@ services:
       - ./firebaseServiceAccountKey.json:/app/firebaseServiceAccountKey.json:ro
 
 networks:
-  itskdhere:
+  npm:
     external: true
-    name: itskdhere
+    name: npm

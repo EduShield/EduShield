@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/itskdhere/EduShield.git"
+    "url": "git+https://github.com/EduShield/EduShield.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/itskdhere/EduShield/issues"
+    "url": "https://github.com/EduShield/EduShield/issues"
   },
-  "homepage": "https://github.com/itskdhere/EduShield#readme",
+  "homepage": "https://github.com/EduShield/EduShield#readme",
   "dependencies": {
     "chalk": "^5.3.0",
     "cors": "^2.8.5",

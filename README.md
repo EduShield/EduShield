@@ -19,7 +19,7 @@ It'll also provide in depth insights for dropped-out students in terms of educat
 ### 🚀 Getting Started:
 1. Clone the repository to your local machine:
 ```bash
-git clone https://github.com/itskdhere/EduShield
+git clone https://github.com/EduShield/EduShield
 ```
 
 2. Go to the project directory:
@@ -50,9 +50,9 @@ service firebase.storage {
 }
 ```
 
-5. Create a custom docker network:
+5. Create a custom docker network (for [nginx-proxy-manager](https://nginxproxymanager.com/)):
 ```bash
-docker network create itskdhere
+docker network create npm
 ```
 
 6. Build and run the app:
